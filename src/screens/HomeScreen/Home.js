@@ -22,7 +22,7 @@ export default function Home() {
   if (pictures === null) {
     return 'Loading....';
   }
-
+  console.log("Here the Homejs,the useeffect one")
   return (
     <SafeAreaView>
       <FlatList

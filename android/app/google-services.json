@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "788153053909",
+    "project_id": "insta-h-ours",
+    "storage_bucket": "insta-h-ours.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788153053909:android:4907668cc69f830e94a85c",
+        "android_client_info": {
+          "package_name": "com.instagramclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788153053909-iq5jpveum4ktjgveade3oqspdttce6ob.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVRFnMDY1tSdP1RYK-NEpdeEcBVMv_oXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788153053909-iq5jpveum4ktjgveade3oqspdttce6ob.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

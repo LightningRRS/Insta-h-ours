@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text } from 'react-native';
+import LoginScreen from '../Authentication/LoginScreen';
+
 
 export default function Search() {
     return (
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'} } >
-            <Text>Search Compo</Text>
+        <View>
+            {/* <LoginScreen/> */}
         </View>
     )
 }
