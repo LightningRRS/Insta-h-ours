@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -33,8 +33,9 @@ export default function Login({navigation}) {
 
     console.log("entered in signup")
   return (
-    <View style={{height: '100%', backgroundColor: 'white'}}>
-      <View style={{height: '50%'}}>
+    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
+    
+      <View >
         <View style={styles.Greettop}>
           <Text style={styles.GreettopText}>Welcome Back</Text>
         </View>
@@ -42,13 +43,13 @@ export default function Login({navigation}) {
           <View
             style={{
               flex: 1,
-              backgroundColor: 'white',
+              backgroundColor: '#F2F2F2',
               borderTopLeftRadius: 150,
             }}></View>
         </View>
       </View>
 
-      <View style={[styles.info],{height : "37%"}}>
+      <View style={[styles.info]}>
         <View>
             <Input 
                 placeholder = 'Enter email'
@@ -65,7 +66,7 @@ export default function Login({navigation}) {
                 leftIcon = {<AntDesign name="lock1" size={25} color="#000" />}
                 rightIcon = {<AntDesign name="check" size={25} color="#000" />}
                 onChangeText={(value) => setPassword(value)}
-                secureTextEntry
+                secureTextEntry={false}
                 value={password}
             />
         </View>
@@ -75,13 +76,13 @@ export default function Login({navigation}) {
                 leftIcon = {<AntDesign name="lock1" size={25} color="#000" />}
                 rightIcon = {<AntDesign name="check" size={25} color="#000" />}
                 onChangeText={(value) => setConfirmPassword(value)}
-                secureTextEntry
+                secureTextEntry={false}
                 value={confirmPassword}
             />
         </View>
         <Text></Text>
       </View>
-      <View style={[styles.buttonPart],{height : "10%"}}>
+      <View style={[styles.buttonPart]}>
         <Button
             title = "Signup"
             raised
@@ -89,20 +90,19 @@ export default function Login({navigation}) {
                 {
                     width : "70%",
                     alignSelf : "center",
-                    marginVertical : 10,
                 }
             }
             onPress={
                 register
             }
-
-            
             disabled = { 
                email.length==0 || password.length==0 || confirmPassword.length==0
             }
         />
 
       </View>
-    </View>
+      
+    
+    </KeyboardAvoidingView>
   );
 }

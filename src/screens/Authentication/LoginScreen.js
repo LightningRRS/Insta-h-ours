@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {View, Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-
+import{KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './Styles';
 import {withSafeAreaInsets} from 'react-native-safe-area-context';
@@ -12,30 +12,40 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            console.log(authUser);
-            if(authUser) {
-                navigation.replace("Home");
-            }
-        })
+    // useEffect(() => {
+    //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+    //         console.log(authUser);
+    //         if(authUser) {
+    //             navigation.replace("Home");
+    //         }
+    //     })
         
-        return unsubscribe;
-    }, [])
+    //     return unsubscribe;
+    // }, [])
     
+    const signingin = () => {
+      console.log("sign in  funct");
+      auth.signInWithEmailAndPassword(email,password).
+      then((userInfo) => {
+        console.log("herher signed in");
+        navigation.replace("Home");
+      }).catch((error) => console.log(error.message)) ;
+
+    }
+
     console.log("Entered in Login")
   return (
-    <KeyboardAvoidingView behavior="padding">
-    <View style={{height: '100%', backgroundColor: 'white'}}>
-      <View style={{height: '50%'}}>
-        <View style={styles.Greettop}>
-          <Text style={styles.GreettopText}>Welcome Back</Text>
-        </View>
+    <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
+    
+      <View style={{}}>
+          <View style={styles.Greettop}>
+              <Text style={styles.GreettopText}>Welcome Back</Text>
+          </View>
         <View style={styles.Greetbottom}>
-          <View
+               <View
             style={{
               flex: 1,
-              backgroundColor: 'white',
+              backgroundColor: '#F2F2F2',
               borderTopLeftRadius: 150,
             }}></View>
         </View>
@@ -58,7 +68,7 @@ export default function Login({ navigation }) {
                 leftIcon = {<AntDesign name="lock1" size={25} color="#000" />}
                 rightIcon = {<AntDesign name="check" size={25} color="#000" />}
                 onChangeText={(value) => setPassword(value)}
-                secureTextEntry
+                secureTextEntry = {false}
                 value={password}
             />
         </View>
@@ -74,14 +84,8 @@ export default function Login({ navigation }) {
                     marginVertical : 10,
                 }
             }
-            onPress = {() => {
-                console.log("Email" , email);
-                console.log("pass" , password);
-                setEmail('');
-                setPassword('');
-                navigation.navigate('Home')
-            }
-
+            onPress = {
+                  signingin
             }
             disabled = { 
                false
@@ -124,7 +128,7 @@ export default function Login({ navigation }) {
 
         />
       </View>
-    </View>
+    
     </KeyboardAvoidingView>
   );
 }
