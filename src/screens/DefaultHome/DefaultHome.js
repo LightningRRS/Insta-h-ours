@@ -13,37 +13,13 @@ import PostsUpload from '../PostsUpload/PostsUpload';
 import Noti from '../Notifications/Noti';
 import Profile from '../Profile/Profile';
 
-export default function DefaultHome() {
-    const Tab = createBottomTabNavigator();
 
-    const HomeStack = createStackNavigator();
-  
-    function HomeStackScreen() {
-      return (
-        <HomeStack.Navigator>
-          <HomeStack.Screen
-            name="DefaultHome"
-            component={Home}
-            options={{
-              title: 'Intagram',
-              headerLeft: () => (
-                <Feather name="camera" size={25} color={'#000'} />
-              ),
-              headerRight: () => (
-                <Inonicons name="paper-plane-outline" size={25} color={'#000'} />
-              ),
-              headerTitleAlign: 'center',
-              headerLeftContainerStyle: {marginLeft: 5},
-              headerRightContainerStyle: {marginRight: 5},
-              headerTitleStyle: {fontFamily: 'cascadia-code'},
-            }}
-          />
-        </HomeStack.Navigator>
-      );
-    }
+
+export default function DefaultHome({navigation}) {
+    const Tab = createBottomTabNavigator();
   
     return (
-      <NavigationContainer independent={true}>
+      
         <Tab.Navigator
           screenOptions={({route}) => ({
             tabBarIcon: ({focused, color, size}) => {
@@ -67,12 +43,13 @@ export default function DefaultHome() {
             inactiveBackgroundColor: '#fff',
             showLabel: false,
           }}>
-          <Tab.Screen name="DefaultHome" component={HomeStackScreen} />
+          <Tab.Screen name="DefaultHome" component={Home} 
+           />
           <Tab.Screen name="Search" component={Search} />
           <Tab.Screen name="Posts" component={PostsUpload} />
           <Tab.Screen name="Notifications" component={Noti} />
           <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
-    </NavigationContainer>
+    
     );
 }

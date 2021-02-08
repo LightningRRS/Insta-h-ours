@@ -27,7 +27,7 @@ export default function Login({ navigation }) {
       console.log("sign in  funct");
       auth.signInWithEmailAndPassword(email,password).
       then((userInfo) => {
-        console.log("herher signed in");
+        console.log("herher signedd asdin");
         navigation.replace("Home");
       }).catch((error) => console.log(error.message)) ;
 
@@ -84,9 +84,11 @@ export default function Login({ navigation }) {
                     marginVertical : 10,
                 }
             }
-            onPress = {
-                  signingin
+            onPress = {() => {
+                  // signingin
+                  navigation.navigate("Home");
             }
+          }
             disabled = { 
                false
             }
