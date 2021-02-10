@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text } from 'react-native';
-import { Input } from 'react-native-elements';
+import { View, Text ,ScrollView } from 'react-native';
+import { Input, SearchBar } from 'react-native-elements';
 import Trending from '../../components/Trending/Trending';
 
 
 
 export default function Search() {
     const [search ,setSearch] = useState('');
-
     
+    trendarray = [] ;
 
     return (
         <View>
-            <Input
-                    rightIcon = {{type : 'Feather', name: 'search'}}
+            <SearchBar
                     placeholder = 'Time to see some gifs'
-                    onChangeText={() => setSearch(value)}
+                    onChangeText={(values) => setSearch(values)}
                     value={search}
             />
+    
           {search.length==0 && 
           <View>
-            <Trending/>
+            <Trending />
           </View>    
           }  
+          
         </View>
+        
     )
 }

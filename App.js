@@ -29,3 +29,5 @@ export default function App() {
     
   )
 };
+
+//http://api.giphy.com/v1/gifs/trending?api_key=6RJ1SSQS5i1ms5A5uV0YX9S1E2d7JerU&limit=12&offset=${counter}
