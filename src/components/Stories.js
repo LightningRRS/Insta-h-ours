@@ -1,10 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {View, Text, FlatList, Pressable} from 'react-native';
 import ProfilePicture from './ProfilePicture';
 import styles from './styles';
 
-export default function Stories({pictures, navigation}) {
+
+export default function Stories({navigation,pictures}) {
+
   console.log('stories aaya re aaya');
+  // const value = useContext(userContext);
+  // let pictures = value.pictures;
+
   return (
     <View style={styles.storyContainer}>
       <FlatList

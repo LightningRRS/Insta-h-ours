@@ -11,6 +11,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Login from './src/screens/Authentication/LoginScreen'
 import DefaultHome from './src/screens/DefaultHome/DefaultHome'
 import SignUp from './src/screens/Authentication/SignupScreen'
+import {userProvider} from './src/Context/UserContext'
 
 const Stack = createStackNavigator();
 

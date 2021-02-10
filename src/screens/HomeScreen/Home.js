@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {View, Text, FlatList, SafeAreaView} from 'react-native';
 import Stories from '../../components/Stories';
 import Post from '../../components/Post/Post';
@@ -7,51 +7,42 @@ import StoriesScreen from '../../components/StoriesScreen/StoriesScreen';
 import Feather from 'react-native-vector-icons/Feather';
 import Inonicons from 'react-native-vector-icons/Ionicons'
 
+import {userContext, userProvider} from '../../Context/UserContext';
 
+export function Homo ({navigation}){
+  
+  const value = useContext(userContext);
+  const pictures = value.pictures;
+
+  console.log(pictures);
+  console.log("below Context in home");
+  
+  return (
+  
+    <FlatList
+      data={pictures}
+      keyExtractor={(item) => item.login.uuid}
+      showsVerticalScrollIndicator={false}
+      ListHeaderComponent={<Stories navigation={navigation} pictures={pictures}/>}
+      renderItem={({item}) => {
+        return <Post item={item} />;
+      }}
+    />
+    
+  );
+}
 
 export default function Home() {
-  const [pictures, setPictures] = useState([]);
-
+  
+  
   const Stack = createStackNavigator();
 
-  useEffect(() => {
-    const apiurl = 'https://randomuser.me/api/?results=5';
-    const fetchdata = async () => {
-      const result = await fetch(apiurl);
-      const jsonResult = await result.json();
-      // console.log('results------>', jsonResult);
-      setPictures(jsonResult.results);
-    };
-    fetchdata();
-  }, []);
-
-  console.log("From home.js",pictures);
-
-  if (pictures === null) {
-    return 'Loading....';
-  }
-  // console.log("Here the Homejs,the useeffect one")
-
-  const homo = ({navigation}) => {
-    return (
-    <View>
-      <FlatList
-        data={pictures}
-        keyExtractor={(item) => item.login.uuid}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={<Stories pictures={pictures} navigation={navigation}/>}
-        renderItem={({item}) => {
-          return <Post item={item} />;
-        }}
-      />
-      </View>
-    );
-  }
+  console.log("Here the Homejs")
 
   return (
     
       <Stack.Navigator initialRouteName="Homea">
-      <Stack.Screen name="Homea" component={homo}
+      <Stack.Screen name="Homea" component={Homo}
         options={{
           title: 'Intagram',
           headerLeft: () => (
@@ -69,8 +60,7 @@ export default function Home() {
       />
       <Stack.Screen name="StoriesScreen" component={StoriesScreen}
       initialParams= {{
-        pictures : pictures ,
-        pindex : 1
+       
       }}/>
       </Stack.Navigator>
     

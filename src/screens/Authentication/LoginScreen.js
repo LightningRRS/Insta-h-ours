@@ -32,8 +32,7 @@ export default function Login({ navigation }) {
       }).catch((error) => console.log(error.message)) ;
 
     }
-
-    console.log("Entered in Login")
+    
   return (
     <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
     

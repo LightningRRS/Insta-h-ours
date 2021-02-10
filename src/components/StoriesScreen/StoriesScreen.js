@@ -7,10 +7,6 @@ const width = Dimensions.get('window').width ;
 const height = Dimensions.get('window').height ;
 const StoriesScreen = ({navigation, route}) => {
     const {pictures, pindex} = route.params;
-    console.log("StoriesScreen");
-    console.log(pictures);
-    console.log(pindex);
-    console.log('bekar gallery');
     return (
         
         
@@ -35,7 +31,7 @@ const StoriesScreen = ({navigation, route}) => {
                 uri={pictures[index].picture.thumbnail}
                 size="small"
               />
-              <Pressable onPress={() => navigation.navigate('Home')}>
+              <Pressable onPress={() => navigation.replace('Homea')}>
                 <Entypo name="cross" size={20} color="#000" />
               </Pressable>
             </View>

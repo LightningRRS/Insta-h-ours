@@ -17,7 +17,7 @@ import Profile from '../Profile/Profile';
 
 export default function DefaultHome({navigation}) {
     const Tab = createBottomTabNavigator();
-  
+  console.log("dafult home");
     return (
       
         <Tab.Navigator
