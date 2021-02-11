@@ -3,9 +3,9 @@ import { View, Text, FlatList,StyleSheet ,Dimensions} from 'react-native'
 import {Image} from 'react-native-elements';
 
 const Width = Dimensions.get('screen').width/3 - 5;
-let Height = Dimensions.get('screen').height;
 
-const Trending = () => {
+const SearchFinalResults = ({navigation,route}) => {
+    const {SearchInput} = route.params ;
     const [helper,setHelper] = useState([[],0,true]);
     
     // const [counter,setCounter] = useState(0)
@@ -15,7 +15,7 @@ const Trending = () => {
         let unmounted = false;
         const counter = helper[1];
         console.log("useffect");
-        const apiurl = `http://api.giphy.com/v1/gifs/trending?api_key=6RJ1SSQS5i1ms5A5uV0YX9S1E2d7JerU&limit=12&offset=${counter}`;
+        const apiurl = encodeURI(`http://api.giphy.com/v1/gifs/search?api_key=6RJ1SSQS5i1ms5A5uV0YX9S1E2d7JerU&limit=12&q=${SearchInput}&offset=${counter}`);
         const trendfetch = async() => {
            
             const resultsdata = await (await fetch(apiurl)).json();
@@ -42,7 +42,7 @@ const Trending = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle = {{
                 paddingTop : -30,
-                paddingBottom : 2.3*Width,
+                paddingBottom : Width,
                 backgroundColor : "#fff",
                    
         }}
@@ -50,7 +50,7 @@ const Trending = () => {
             helper[2] && (
                 <View style={{alignSelf: 'center'}}>
                   <Image
-                    source={require('../../../asset/Loading.gif')}
+                    source={require('../../asset/Loading.gif')}
                     style={{width: 100, height: 100}}
                   />
                 </View>
@@ -79,7 +79,7 @@ const Trending = () => {
             style = {{width : Width, height: Width}}          
              PlaceholderContent = {
                 <Image
-                 source = { require('../../../asset/Loding.gif')}
+                 source = { require('../../asset/Loding.gif')}
                 style = {{width : Width, height: Width}}
                 />
                 }
@@ -91,4 +91,4 @@ const Trending = () => {
     )
 }
 
-export default Trending
+export default SearchFinalResults
