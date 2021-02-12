@@ -44,7 +44,7 @@ export default function Home() {
       <Stack.Navigator initialRouteName="Homea">
       <Stack.Screen name="Homea" component={Homo}
         options={{
-          title: 'Intagram',
+          title: 'Gify by M&R',
           headerLeft: () => (
             <Feather name="camera" size={25} color={'#000'} />
           ),
