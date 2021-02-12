@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import {View, Text, StyleSheet, KeyboardAvoidingView, Alert} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import{KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import styles from './Styles';
-import {withSafeAreaInsets} from 'react-native-safe-area-context';
 import { Button, Input } from 'react-native-elements';
 import { auth } from '../../../backend/Firebase';
 
@@ -12,16 +10,16 @@ export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // useEffect(() => {
-    //     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-    //         console.log(authUser);
-    //         if(authUser) {
-    //             navigation.replace("Home");
-    //         }
-    //     })
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            console.log(authUser);
+            if(authUser) {
+                navigation.replace("Home");
+            }
+        })
         
-    //     return unsubscribe;
-    // }, [])
+        return unsubscribe;
+    }, [])
     
     const signingin = () => {
       console.log("sign in  funct");
@@ -29,7 +27,7 @@ export default function Login({ navigation }) {
       then((userInfo) => {
         console.log("herher signedd asdin");
         navigation.replace("Home");
-      }).catch((error) => console.log(error.message)) ;
+      }).catch((error) => Alert.alert(error.message)) ;
 
     }
     
@@ -69,6 +67,7 @@ export default function Login({ navigation }) {
                 onChangeText={(value) => setPassword(value)}
                 secureTextEntry = {false}
                 value={password}
+                secureTextEntry
             />
         </View>
       </View>
@@ -83,10 +82,8 @@ export default function Login({ navigation }) {
                     marginVertical : 10,
                 }
             }
-            onPress = {() => {
-                  // signingin
-                  navigation.navigate("Home");
-            }
+            onPress = {
+                signingin
           }
             disabled = { 
                false

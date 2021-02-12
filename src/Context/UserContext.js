@@ -9,12 +9,12 @@ export function userProvider (props) {
     
     const [pictures, setPictures] = useState([]);
     useEffect(() => {
-        const apiurl = 'https://randomuser.me/api/?results=5';
+        const apiurl = 'https://api.giphy.com/v1/gifs/trending?api_key=6RJ1SSQS5i1ms5A5uV0YX9S1E2d7JerU&limit=20&offset=60';
         const fetchdata = async () => {
           const result = await fetch(apiurl);
           const jsonResult = await result.json();
-          // console.log('results------>', jsonResult);
-          setPictures(jsonResult.results);
+  
+          setPictures(jsonResult.data);
           
         };
         fetchdata();

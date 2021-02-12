@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, Pressable,FlatList ,Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Pressable,FlatList ,Dimensions} from 'react-native';
 import ProfilePicture from '../ProfilePicture';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {Image} from 'react-native-elements'
 
 const width = Dimensions.get('window').width ;
 const height = Dimensions.get('window').height ;
@@ -12,7 +13,7 @@ const StoriesScreen = ({navigation, route}) => {
         
       <FlatList
         data={pictures}
-        keyExtractor={(item) => item.login.uuid}
+        keyExtractor={(item) => item.id}
         horizontal
         initialScrollIndex={pindex}
         pagingEnabled
@@ -28,7 +29,7 @@ const StoriesScreen = ({navigation, route}) => {
                 marginRight : 5
               }}>
               <ProfilePicture
-                uri={pictures[index].picture.thumbnail}
+                uri={item.images.fixed_width_small_still.url}
                 size="small"
               />
               <Pressable onPress={() => navigation.replace('Homea')}>
@@ -36,8 +37,14 @@ const StoriesScreen = ({navigation, route}) => {
               </Pressable>
             </View>
             <Image
-              source={{uri: item.picture.large}}
+              source={{uri: item.images.original.url}}
               style={([StyleSheet.absoluteFillObject]),{height : height , width : width}}
+              PlaceholderContent={
+                <Image
+                  source={require('../../../asset/cylinder.gif')}
+                  style = {{height : height,width : width}}
+                />
+              }
             />
           </View>
          );

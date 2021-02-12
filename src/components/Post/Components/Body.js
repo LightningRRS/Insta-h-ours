@@ -1,6 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {Image} from 'react-native-elements'
 
+const Width = Dimensions.get('screen').width - 5;
 export default function Body({uri}) {
   return (
     <Image
@@ -9,6 +11,12 @@ export default function Body({uri}) {
         height: 400,
         width: '100%',
       }}
+      PlaceholderContent={
+        <Image
+          source={require('../../../../asset/nice.gif')}
+          style={{height:400,width:Width}}
+        />
+      }
     />
   );
 }

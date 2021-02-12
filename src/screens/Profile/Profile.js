@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Image } from 'react-native-elements';
 import { auth } from '../../../backend/Firebase';
 import SignupScreen from '../Authentication/SignupScreen'
 
 export default function Profile({navigation}) {
   return (
-    <View >
-      <Text>user profile</Text>
+    <View style={{paddingTop : "20%"}}>
+      
       <Button 
       title="Sign Out"
         onPress = { () => {
@@ -27,6 +27,11 @@ export default function Profile({navigation}) {
               marginVertical : 10
           }
       }
+      />
+      <Image
+          source = {require('../../../asset/later.gif')}
+          resizeMode="contain"
+          style={{height : "70%",marginTop: "10%"}}
       />
     </View>
   );

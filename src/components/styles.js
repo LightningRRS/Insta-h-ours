@@ -6,15 +6,17 @@ const styles = StyleSheet.create({
     width: 66,
     borderRadius: 33,
     borderWidth: 3,
-    borderColor: '#ae22e0',
+    borderColor: '#f2f2f2',
     margin: 7,
   },
   profileImage: {
     height: 60,
     width: 60,
-    borderRadius:30,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderRadius: 30,
+    borderWidth: 3,
+    padding : 5,
+    borderColor: '#ae22e0',
+    overlayColor : '#f2f2f2'
   },
   storyContainer: {
     //   flex: 1,
@@ -43,21 +45,23 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     borderRadius: 15,
-    borderWidth: 1,
-    borderColor: '#fff',
+    borderWidth: 3,
+    borderColor: '#ae22e0',
+    overlayColor : "#f2f2f2"
   },
   smallContainer: {
     height: 36,
     width: 36,
     borderRadius: 18,
     borderWidth: 3,
-    borderColor: '#ae22e0',
+    borderColor: '#f2f2f2',
     margin: 7,
   },
   Footer : {
     paddingHorizontal : 10,
     paddingBottom : 5,
-    backgroundColor : "#cce6d3"
+    backgroundColor : "#cce6d3",
+    paddingTop: 10
   },
 });
 

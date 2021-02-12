@@ -50,7 +50,7 @@ export function Search({navigation}) {
     
           {!focus && search.length==0 &&
           
-            <Trending />
+            <Trending navigation={navigation}/>
           
           }  
           {focus && search.length === 0 && <TrendingResults setSearch={setSearch} navigation={navigation}/> }

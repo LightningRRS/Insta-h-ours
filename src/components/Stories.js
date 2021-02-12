@@ -14,7 +14,7 @@ export default function Stories({navigation,pictures}) {
     <View style={styles.storyContainer}>
       <FlatList
         data={pictures}
-        keyExtractor={(item) => item.login.uuid}
+        keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => {
@@ -28,8 +28,9 @@ export default function Stories({navigation,pictures}) {
             }
               >
               <ProfilePicture
-                uri={item.picture.medium}
-                name={item.login.username}
+                uri={item.images.fixed_width_small_still.url}
+                name={item.username}
+                size="notsmall"
               />
             </Pressable>
           );

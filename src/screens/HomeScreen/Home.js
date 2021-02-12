@@ -21,7 +21,7 @@ export function Homo ({navigation}){
   
     <FlatList
       data={pictures}
-      keyExtractor={(item) => item.login.uuid}
+      keyExtractor={(item) => item.id}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={<Stories navigation={navigation} pictures={pictures}/>}
       renderItem={({item}) => {

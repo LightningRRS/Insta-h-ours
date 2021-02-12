@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   Greettop: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#3b1c99',
     borderBottomRightRadius: 150,
     justifyContent: 'center',
     alignItems: 'center',
@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
   GreettopText: {
     fontSize: 40,
     fontWeight: '800',
+    color:'#f2f2f0'
   },
   Greetbottom: {
     width: '100%',
-    backgroundColor: 'green',
+    backgroundColor: '#3b1c99',
     height: '40%',
   },
   info: {

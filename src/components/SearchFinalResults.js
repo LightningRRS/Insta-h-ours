@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react'
-import { View, Text, FlatList,StyleSheet ,Dimensions} from 'react-native'
+import { View, Text, FlatList,StyleSheet ,Dimensions, Pressable} from 'react-native'
 import {Image} from 'react-native-elements';
 
 const Width = Dimensions.get('screen').width/3 - 5;
@@ -72,8 +72,14 @@ const SearchFinalResults = ({navigation,route}) => {
         renderItem = {({item,index})=> {
                     
     return( 
-        <View style={{margin: 1, borderWidth: 0.7, borderColor: '#fff',
-            }} >
+        <Pressable style={{margin: 1, borderWidth: 0.7, borderColor: '#fff',
+            }} 
+            onPress={() => {
+                navigation.navigate('Gif',{
+                    id : item.id
+                })
+            }}
+            >
             <Image
              source={{uri: item.images.fixed_height_still.url}}
             style = {{width : Width, height: Width}}          
@@ -84,7 +90,7 @@ const SearchFinalResults = ({navigation,route}) => {
                 />
                 }
             />
-         </View>)
+         </Pressable>)
     }}
      />
     </View>

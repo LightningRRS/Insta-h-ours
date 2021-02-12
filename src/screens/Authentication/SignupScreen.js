@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react';
-import {View, Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
+import {View, Text, StyleSheet, KeyboardAvoidingView, Alert} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -28,16 +28,15 @@ export default function Login({navigation}) {
                 
             })
         console.log(authUser);
-        }).catch((error) => console.log(error.message));
+        }).catch((error) => Alert.alert(error.message));
     }
 
     console.log("entered in signup")
   return (
     <KeyboardAvoidingView style={{flex:1}} behavior="padding" enabled>
-    
       <View >
         <View style={styles.Greettop}>
-          <Text style={styles.GreettopText}>Welcome Back</Text>
+          <Text style={styles.GreettopText}>Welcome To App</Text>
         </View>
         <View style={styles.Greetbottom}>
           <View
@@ -68,6 +67,7 @@ export default function Login({navigation}) {
                 onChangeText={(value) => setPassword(value)}
                 secureTextEntry={false}
                 value={password}
+                secureTextEntry={true}
             />
         </View>
         <View>
@@ -78,6 +78,7 @@ export default function Login({navigation}) {
                 onChangeText={(value) => setConfirmPassword(value)}
                 secureTextEntry={false}
                 value={confirmPassword}
+                secureTextEntry={true}
             />
         </View>
         <Text></Text>
